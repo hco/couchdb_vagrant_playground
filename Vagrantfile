@@ -24,8 +24,10 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y couchdb
   SHELL
 
-  config.vm.define "couch1" do |box|
+  config.vm.define "couch1" do |couch|
+    couch.vm.hostname = "couch1"
   end
-  config.vm.define "couch2" do |box|
+  config.vm.define "couch2" do |couch|
+    couch.vm.hostname = "couch2"
   end
 end
