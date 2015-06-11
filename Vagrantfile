@@ -22,6 +22,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y couchdb
+    sudo echo "[httpd]" > /etc/couchdb/local.d/bind.ini
+    sudo echo "bind_address = 0.0.0.0" >> /etc/couchdb/local.d/bind.ini
+    sudo service couchdb restart
   SHELL
 
   config.vm.define "couch1" do |couch|
